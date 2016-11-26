@@ -1,0 +1,20 @@
+import json
+from pprint import pprint
+
+var lat = '', lon = '';
+function getLocation(code){
+  $.getJSON('http://api.erg.kcl.ac.uk/AirQuality/Hourly/MonitoringIndex/SiteCode='+code'/Json', function(data, status){
+      $.each(data,function( index, value ){def saveFile(data):
+        file = open('AroundLondon.json','a')
+        file.write(data)
+        file.close()
+
+
+      });
+    });
+}
+
+with open('monitoring_sites.json') as data_file:
+    data = json.load(data_file)
+
+

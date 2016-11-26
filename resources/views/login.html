@@ -3,7 +3,8 @@
 <head>
   <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
   <script src="../js/initFireBase.js"></script>
-  <link
+  <script src="../../node_modules/firebaseui/dist/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="../../node_modules/firebaseui/dist/firebaseui.css" />
   <link type="text/css" rel="stylesheet" href="../css/bootstrap.css"/>
 </head>
 
@@ -12,16 +13,7 @@
     <div class="col-md-4">
       <img src="../pics/air.png"/>
     </div>
-    <div id="login-panel" class="col-md-6">
-          <input id="username" class="form-control" type="text" placeholder="Username"/>
-          <div class="input-group">
-            <input id="password" type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1"/>
-            <span class="input-group-addon">
-              <input type="checkbox" id="show-password" value="Show">
-            </span>
-          </div>
-          <button id="login" class="btn btn-primary">Log In</button>
-    </div>
+    <div id="firebaseui-auth-container"></div>
   </div>
 </body>
 <script src="../js/login.js"></script>

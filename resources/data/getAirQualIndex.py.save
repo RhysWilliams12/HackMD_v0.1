@@ -1,0 +1,17 @@
+import urllib2
+from datetime import timedelta
+
+def saveFile(data,url):
+	name = url.replace('/','_')
+	file = open(name,'w')
+	file.write(data)
+	file.close()
+
+
+dif = timedelta(hours=1)
+	fullURL = 'http://api.erg.kcl.ac.uk/AirQuality/Daily/MonitoringIndex/GroupName=AroundLondon/Date=2016-11-'+str(i)+'%20'++'/Json'
+	output = urllib2.urlopen(fullURL).read()
+	saveFile(output,'index/date/sep/'+str(i))
+
+
+

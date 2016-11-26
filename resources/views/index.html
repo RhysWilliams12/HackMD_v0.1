@@ -1,135 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-      
-    <title>Heatmaps</title>
-    <style>
-        
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 970px;
-          width: 75%;
-          margin: 0 auto !important;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        
-        padding: 0;
-      }
-      #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-      #floating-panel {
-        background-color: #fff;
-        border: 1px solid #999;
-        left: 25%;
-        padding: 5px;
-        position: absolute;
-        top: 10px;
-        z-index: 5;
-      }
-    </style>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  </head>
+<head>
+  <meta charset="utf-8">
 
-  <body>
-      
-      <img src = "C:\Users\soukina\Pictures\air.png" height=150px margin = 0> 
-     <nav class="navbar navbar-inverse">
-</nav>
-  
- <div class="panel panel-primary col-md-3">
-      <div class="panel-heading">Dashboard</div>
-      <div class="panel-body">Pollutants Absorbed Level</div>
-     
-     <div class="progress">
-  <div class="progress-bar progress-bar-success" style="width: 35%">
-    <span class="sr-only">35% Complete (success)</span>
-  </div>
-  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
-    <span class="sr-only">20% Complete (warning)</span>
-  </div>
-  <div class="progress-bar progress-bar-danger" style="width: 10%">
-    <span class="sr-only">10% Complete (danger)</span>
-  </div>
-</div>
-     
-     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Add Location">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Add</button>
+  <title>Heatmaps</title>
+  <link rel="stylesheet" href="../css/index.css" type="text/css"/>
+  <script src="../js/index.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+  <img src = "../pics/air.png" height=150px margin = 0>
+  <nav class="navbar navbar-inverse">
+
+  </nav>
+
+  <div class="panel panel-primary col-md-3">
+    <div class="panel-heading">Dashboard</div>
+    <div class="panel-body">Pollutants Absorbed Level</div>
+
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" style="width: 35%">
+        <span class="sr-only">35% Complete (success)</span>
+      </div>
+      <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
+        <span class="sr-only">20% Complete (warning)</span>
+      </div>
+      <div class="progress-bar progress-bar-danger" style="width: 10%">
+        <span class="sr-only">10% Complete (danger)</span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Add Location" id="input">
+      <span class="input-group-btn" >
+        <button class="btn btn-default" type="button" onclick="addToPath()">Add</button>
       </span>
     </div>
-    
-     
-</div>
-      <div class="col-md-9" id="map"></div>
-    <script>
-
-      // This example requires the Visualization library. Include the libraries=visualization
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnFhWiWZdALtdAg3CYy8-YnmXXq_f6uzE&libraries=visualization">
-
-      var map, heatmap;
-
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: {lat: 51.485586, lng: -0.201658},
-          mapTypeId: 'satellite'
-        });
-
-        heatmap = new google.maps.visualization.HeatmapLayer({
-          data: getPoints(),
-          map: map,
-        radius: 50
-        });
-          
-           var locations = [
-          {lat: 51.490340, lng: -0.195862},
-          {lat: 51.487470, lng: -0.195757},
-            {lat:51.511732, lng: -0.123270},
-             {lat:51.505431, lng: -0.023533},  
-        ];
-        var Path = new google.maps.Polyline({
-          path: locations,
-          geodesic: true,
-          strokeColor: '#FF0000',
-          strokeOpacity: 1.0,
-          strokeWeight: 2
-        });
-
-        Path.setMap(map);
-      }
-
-      
 
 
-      
-      // Heatmap data: 500 Points
-      function getPoints() {
-        return [
-          new google.maps.LatLng(51.487470,-0.195757),
-        new google.maps.LatLng(51.507879,-0.087732),
-            new google.maps.LatLng(51.489594,-0.159344),
-         
-        ];
-      }
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnFhWiWZdALtdAg3CYy8-YnmXXq_f6uzE&libraries=visualization&callback=initMap">
-    </script>
-  </body>
+  </div>
+  <div class="col-md-9" id="map"></div>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnFhWiWZdALtdAg3CYy8-YnmXXq_f6uzE&libraries=visualization&callback=initMap">
+  </script>
+</body>
+<script
+			  src="https://code.jquery.com/jquery-3.1.1.min.js"
+			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			  crossorigin="anonymous"></script>
 </html>

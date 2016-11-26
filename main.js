@@ -10,3 +10,14 @@ app.get('/',function(req,res){
 
 app.use(express.static('resources'));
 app.listen(8080);
+var buffer = '',data;
+
+http.get('http://api.erg.kcl.ac.uk/AirQuality/Hourly/MonitoringIndex/SiteCode=KC2/Json',function(res){
+  res.on("data", function (chunk) {
+        buffer += chunk;
+    });
+  res.on("end", function (err) {
+        data = JSON.parse(buffer);
+        console.log(data);
+    });
+});

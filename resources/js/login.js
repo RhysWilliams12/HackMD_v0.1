@@ -1,7 +1,26 @@
-var passwordField = document.findElementById('password');
-var showPassword = document.findElementById('show-password');
+var firebase = require('firebase');
+var firebaseui = require('firebaseui');
+
+var uiConfig = {
+  'signInSuccessUrl': './index.html',
+  'signInOptions': [
+    firebase.auth.EmailAuthProvider.PROVIDER_ID
+  ],
+  // Terms of service url.
+  'tosUrl': '',
+};
+
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+ui.start('#firebaseui-auth-container', uiConfig);
+
+firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  var errorCode = error.code;
+  var errorMessage = error.message;
+});
 
 
-
-password.setAttribute('type','text');
-password.setAttribute('type','password');
+firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}, function(error) {
+  // An error happened.
+});
